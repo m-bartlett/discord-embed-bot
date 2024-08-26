@@ -58,13 +58,18 @@ class EmbedFriendlyUrlSubstitutorBot(discord.Client):
 
         new_content, substitutions_made = self._url_regex.subn(self._url_replace, message.content)
         if substitutions_made > 0:
-            await message.delete()
-            async with aiohttp.ClientSession() as session:
-                self.webhook.session = session
-                await self.webhook.edit(channel=message.channel)
-                await self.webhook.send(new_content,
-                                        username=f"{message.author.nick} (URL substituted)",
-                                        avatar_url=message.author.display_avatar.url)
+            substitutions = {url: self._url_replace(url)
+                             for url in self._url_regex.finditer(message.content)}
+            substitutions_formatted = '\n'.join(f'{k} -> {v}' for k, v in substitutions.items())
+            message_content = f"DEBUG:\n{substitutions_formatted}"
+            await message.channel.send(content=message_content)
+            # await message.delete()
+            # async with aiohttp.ClientSession() as session:
+                # self.webhook.session = session
+                # await self.webhook.edit(channel=message.channel)
+                # await self.webhook.send(new_content,
+                #                         username=f"{message.author.nick} (URL substituted)",
+                #                         avatar_url=message.author.display_avatar.url)
 
 
     async def handle_text_command(self, message: discord.Message):
