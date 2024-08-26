@@ -1,0 +1,11 @@
+{
+    "url_replacements": {
+        "www.instagram.com": "www.ddinstagram.com",
+        "twitter.com": "vxtwitter.com",
+        "x.com": "vxtwitter.com",
+        "www.reddit.com": "www.rxyddit.com",
+        "www.tiktok.com": "www.tfxktok.com"
+    },
+    "discord_token": "xxxxxYourTokenHereXXXXXXXX",
+    "discord_webhook_url": "https://discord.com/api/webhooks/0123456789/xxxxYourWebhookIdHereXXXX"
+}

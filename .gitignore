@@ -1,0 +1,6 @@
+
+.env
+venv
+*.sublime-*
+config.json
+config.toml
