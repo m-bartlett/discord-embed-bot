@@ -4,3 +4,4 @@ venv
 *.sublime-*
 config.json
 config.toml
+**/__pycache__
