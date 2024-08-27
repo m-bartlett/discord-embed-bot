@@ -58,12 +58,6 @@ class UrlSubstituteBot(discord.Client):
 
         new_content = self._url_sub(message.content)
         if new_content != message.content:
-            # substitutions = {url[0]: self._url_sub_repl(url)
-            #                  for url in self._url_regex.finditer(message.content)}
-            # substitutions_formatted = '\n'.join(f'{k} -> {v}' for k, v in substitutions.items())
-            # message_content = f"DEBUG:\n{substitutions_formatted}"
-            # await message.channel.send(content=message_content)
-
             await message.delete()
             async with aiohttp.ClientSession() as session:
                 self.webhook.session = session
