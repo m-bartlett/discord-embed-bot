@@ -61,7 +61,7 @@ class UrlSubstituteBot(discord.Client):
             await message.delete()
             async with aiohttp.ClientSession() as session:
                 self.webhook.session = session
-                username = message.author.nick or message.author.name
+                username = message.author.nick or message.author.global_name
                 await self.webhook.edit(channel=message.channel)
                 await self.webhook.send(new_content,
                                         username=f"{username} (URL substituted)",
