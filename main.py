@@ -1,8 +1,8 @@
 import argparse
 import discord
 import json
-
 from url_substitute_bot import UrlSubstituteBot
+
 
 def main():
     parser = argparse.ArgumentParser()
@@ -18,6 +18,7 @@ def main():
     client = UrlSubstituteBot(url_replacements = config['url_replacements'],
                               webhook_url      = config['discord_webhook_url'],
                               bot_token        = config['discord_token'],
+                              owner_id         = config['owner_id'],
                               config_path      = args.config_file.name,
                               intents          = intents)
     client.run()
